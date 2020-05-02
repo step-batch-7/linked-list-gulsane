@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "./list.h"
 
@@ -33,4 +34,14 @@ Status add_to_end(List_ptr list, int value)
   list->count++;
   Status status = Success;
   return status;
+}
+
+void display(List_ptr list)
+{
+  Node_ptr walk_on = list->head;
+  while (walk_on != NULL)
+  {
+    printf("%d\n", walk_on->value);
+    walk_on = walk_on->next;
+  }
 }

@@ -14,6 +14,11 @@ Status completeOperation(List_ptr list, char option)
     return add_to_end(list, value);
     break;
 
+  case 'l':
+    printf("your List is as follows\n");
+    display(list);
+    break;
+
   default:
     printf("you have entered wrong option\n");
     Status status = Failure;
