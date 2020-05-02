@@ -45,3 +45,18 @@ void display(List_ptr list)
     walk_on = walk_on->next;
   }
 }
+
+Status add_to_start(List_ptr list, int value)
+{
+  Node_ptr new_node = create_node(value);
+  Node_ptr second_node = list->head;
+  list->head = new_node;
+  if (list->last == NULL)
+  {
+    list->last = new_node;
+  }
+  list->head->next = second_node;
+  list->count++;
+  Status status = Success;
+  return status;
+}

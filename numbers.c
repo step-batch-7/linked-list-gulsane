@@ -14,6 +14,13 @@ Status completeOperation(List_ptr list, char option)
     return add_to_end(list, value);
     break;
 
+  case 'b':
+    printf("Enter a number to add to start of the list: \n");
+    scanf("%d", &value);
+    fflush(stdin);
+    return add_to_start(list, value);
+    break;
+
   case 'l':
     printf("your List is as follows\n");
     display(list);
