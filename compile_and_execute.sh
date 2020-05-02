@@ -1,9 +1,8 @@
 mkdir -p bin
-directory=$1
-executable=$2
+executable=$1
 
 echo "compiling..."
-gcc -c ${directory}/*.c
+gcc -c ./*.c
 gcc -o ${executable} ./*.o
 echo "commpiling done..."
 
