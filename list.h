@@ -23,6 +23,11 @@ typedef struct
 
 typedef List *List_ptr;
 
+typedef struct {
+  Node_ptr prev;
+  Node_ptr current;
+} Prev_Current_Pair;
+
 List_ptr create_list(void);
 
 Status add_to_end(List_ptr, int value);

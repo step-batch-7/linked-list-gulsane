@@ -4,7 +4,7 @@
 
 Status completeOperation(List_ptr list, char option)
 {
-  int value;
+  int value, position;
   switch (option)
   {
   case 'a':
@@ -19,6 +19,13 @@ Status completeOperation(List_ptr list, char option)
     scanf("%d", &value);
     fflush(stdin);
     return add_to_start(list, value);
+    break;
+
+  case 'c':
+    printf("Enter number and position to insert in the list: \n");
+    scanf("%d %d", &value, &position);
+    fflush(stdin);
+    return insert_at(list, value, position);
     break;
 
   case 'l':

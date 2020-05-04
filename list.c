@@ -60,3 +60,35 @@ Status add_to_start(List_ptr list, int value)
   Status status = Success;
   return status;
 }
+
+Status insert_at(List_ptr list, int value, int position)
+{
+  Status status;
+  if (position < 0 || position > list->count)
+  {
+    status = Failure;
+    return status;
+  }
+  Node_ptr new_node = create_node(value);
+  Prev_Current_Pair prev_current_pair;
+  prev_current_pair.current = list->head;
+  prev_current_pair.prev = NULL;
+
+  while (position != 0)
+  {
+    prev_current_pair.prev = prev_current_pair.current;
+    prev_current_pair.current = prev_current_pair.current->next;
+    position--;
+  }
+
+  if (prev_current_pair.prev == NULL)
+  {
+    return add_to_start(list, value);
+  }
+
+  prev_current_pair.prev->next = new_node;
+  new_node->next = prev_current_pair.current;
+  list->count++;
+  status = Success;
+  return status;
+}
