@@ -28,6 +28,13 @@ Status completeOperation(List_ptr list, char option)
     return insert_at(list, value, position);
     break;
 
+  case 'd':
+    printf("Enter a unique number to add to end of the list: \n");
+    scanf("%d", &value);
+    fflush(stdin);
+    return add_unique(list, value);
+    break;
+
   case 'l':
     printf("your List is as follows\n");
     display(list);
