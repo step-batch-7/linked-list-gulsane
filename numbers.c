@@ -55,6 +55,15 @@ Status completeOperation(List_ptr list, char option)
     return remove_at(list, position);
     break;
 
+    case 'h':
+    printf("Enter a number to remove its first occurrence from list: \n");
+    scanf("%d", &value);
+    fflush(stdin);
+    status = remove_first_occurrence(list, value);
+    printf("%s\n", status ? "Number successfully removed from the list" : "Number not found");
+    return status;
+    break;
+
   case 'l':
     printf("your List is as follows\n");
     display(list);

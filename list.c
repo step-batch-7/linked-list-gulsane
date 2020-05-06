@@ -147,3 +147,17 @@ Status remove_from_end(List_ptr list)
 {
   return remove_at(list, list->count - 1);
 }
+
+Status remove_first_occurrence(List_ptr list, int value)
+{
+  Node_ptr p_walker = list->head;
+  for (size_t i = 0; p_walker->next != NULL; i++)
+  {
+    if (p_walker->value == value)
+    {
+      return remove_at(list, i);
+    }
+    p_walker = p_walker->next;
+  }
+  return Failure;
+}
