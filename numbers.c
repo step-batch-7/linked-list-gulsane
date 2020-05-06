@@ -5,6 +5,7 @@
 Status completeOperation(List_ptr list, char option)
 {
   int value, position;
+  Status status;
   switch (option)
   {
   case 'a':
@@ -33,6 +34,12 @@ Status completeOperation(List_ptr list, char option)
     scanf("%d", &value);
     fflush(stdin);
     return add_unique(list, value);
+    break;
+
+  case 'e':
+    status = remove_from_start(list);
+    printf("%s\n", status ? "Number successfully removed from start of the list" : "list is empty");
+    return status;
     break;
 
   case 'g':
