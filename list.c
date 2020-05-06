@@ -106,3 +106,32 @@ Status add_unique(List_ptr list, int value)
   }
   return add_to_end(list, value);
 }
+
+Status remove_at(List_ptr list, int position) 
+{
+  if(position >= list->count || position < 0)
+  {
+    return Failure;
+  }
+  Prev_Current_Pair pre_current_pair;
+  pre_current_pair.prev = NULL;
+  pre_current_pair.current = list->head;
+  while(position > 0){
+    pre_current_pair.prev = pre_current_pair.current;
+    pre_current_pair.current = pre_current_pair.current->next;
+    position--;
+  }
+  Node_ptr node_to_remove = pre_current_pair.current;
+  Node_ptr *ptr_to_set = &list->head;
+  if (pre_current_pair.prev != NULL)
+  {
+    ptr_to_set = &pre_current_pair.prev->next;
+  }
+  *ptr_to_set = pre_current_pair.current->next;
+  if(pre_current_pair.current->next==NULL){
+    list->last = pre_current_pair.prev;
+  }
+  list->count--;
+  free(node_to_remove);
+  return Success;
+}

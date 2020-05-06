@@ -35,6 +35,13 @@ Status completeOperation(List_ptr list, char option)
     return add_unique(list, value);
     break;
 
+  case 'g':
+    printf("Enter position of number to remove from the list: \n");
+    scanf("%d", &position);
+    fflush(stdin);
+    return remove_at(list, position);
+    break;
+
   case 'l':
     printf("your List is as follows\n");
     display(list);
