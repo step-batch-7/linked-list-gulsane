@@ -107,16 +107,17 @@ Status add_unique(List_ptr list, int value)
   return add_to_end(list, value);
 }
 
-Status remove_at(List_ptr list, int position) 
+Status remove_at(List_ptr list, int position)
 {
-  if(position >= list->count || position < 0)
+  if (position >= list->count || position < 0)
   {
     return Failure;
   }
   Prev_Current_Pair pre_current_pair;
   pre_current_pair.prev = NULL;
   pre_current_pair.current = list->head;
-  while(position > 0){
+  while (position > 0)
+  {
     pre_current_pair.prev = pre_current_pair.current;
     pre_current_pair.current = pre_current_pair.current->next;
     position--;
@@ -128,7 +129,8 @@ Status remove_at(List_ptr list, int position)
     ptr_to_set = &pre_current_pair.prev->next;
   }
   *ptr_to_set = pre_current_pair.current->next;
-  if(pre_current_pair.current->next==NULL){
+  if (pre_current_pair.current->next == NULL)
+  {
     list->last = pre_current_pair.prev;
   }
   list->count--;
@@ -139,4 +141,9 @@ Status remove_at(List_ptr list, int position)
 Status remove_from_start(List_ptr list)
 {
   return remove_at(list, 0);
+}
+
+Status remove_from_end(List_ptr list)
+{
+  return remove_at(list, list->count - 1);
 }

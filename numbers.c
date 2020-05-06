@@ -42,6 +42,12 @@ Status completeOperation(List_ptr list, char option)
     return status;
     break;
 
+  case 'f':
+    status = remove_from_end(list);
+    printf("%s\n", status ? "Number successfully removed from end of the list" : "list is empty");
+    return status;
+    break;
+
   case 'g':
     printf("Enter position of number to remove from the list: \n");
     scanf("%d", &position);
