@@ -195,17 +195,16 @@ Status clear_list(List_ptr list)
     return Failure;
   }
 
-  Prev_Current_Pair prev_current_pair;
-  prev_current_pair.current = list->head;
-  prev_current_pair.prev = NULL;
+  Node_ptr p_walker = list->head;
 
-  while (prev_current_pair.current != NULL)
+  while (p_walker != NULL)
   {
-    prev_current_pair.prev = prev_current_pair.current;
-    prev_current_pair.current = prev_current_pair.current->next;
-    list->head = prev_current_pair.current;
-    free(prev_current_pair.prev);
+    list->head = p_walker->next;
+    free(p_walker);
     list->count--;
+    p_walker = list->head;
   }
+
+  list->last = NULL;
   return Success;
 }
