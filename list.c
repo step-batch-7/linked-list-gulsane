@@ -187,3 +187,25 @@ Status remove_all_occurrences(List_ptr list, int value)
 
   return status;
 }
+
+Status clear_list(List_ptr list)
+{
+  if (list->count == 0)
+  {
+    return Failure;
+  }
+
+  Prev_Current_Pair prev_current_pair;
+  prev_current_pair.current = list->head;
+  prev_current_pair.prev = NULL;
+
+  while (prev_current_pair.current != NULL)
+  {
+    prev_current_pair.prev = prev_current_pair.current;
+    prev_current_pair.current = prev_current_pair.current->next;
+    list->head = prev_current_pair.current;
+    free(prev_current_pair.prev);
+    list->count--;
+  }
+  return Success;
+}
