@@ -64,6 +64,15 @@ Status completeOperation(List_ptr list, char option)
     return status;
     break;
 
+    case 'i':
+    printf("Enter a number to remove its all occurrences from list: \n");
+    scanf("%d", &value);
+    fflush(stdin);
+    status = remove_all_occurrences(list, value);
+    printf("%s\n", status ? "Number successfully removed from the list" : "Number not found");
+    return status;
+    break;
+
   case 'l':
     printf("your List is as follows\n");
     display(list);

@@ -151,7 +151,7 @@ Status remove_from_end(List_ptr list)
 Status remove_first_occurrence(List_ptr list, int value)
 {
   Node_ptr p_walker = list->head;
-  for (size_t i = 0; p_walker->next != NULL; i++)
+  for (size_t i = 0; i < list->count; i++)
   {
     if (p_walker->value == value)
     {
@@ -160,4 +160,30 @@ Status remove_first_occurrence(List_ptr list, int value)
     p_walker = p_walker->next;
   }
   return Failure;
+}
+
+Status is_number_in_list(List_ptr list, int value)
+{
+  Node_ptr p_walker = list->head;
+  while (p_walker != NULL)
+  {
+    if (p_walker->value == value)
+    {
+      return Success;
+    }
+    p_walker = p_walker->next;
+  }
+  return Failure;
+}
+
+Status remove_all_occurrences(List_ptr list, int value)
+{
+  Status status;
+
+  while (is_number_in_list(list, value))
+  {
+    status = remove_first_occurrence(list, value);
+  }
+
+  return status;
 }
