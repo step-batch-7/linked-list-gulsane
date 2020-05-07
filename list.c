@@ -178,7 +178,7 @@ Status is_number_in_list(List_ptr list, int value)
 
 Status remove_all_occurrences(List_ptr list, int value)
 {
-  Status status;
+  Status status = Failure;
 
   while (is_number_in_list(list, value))
   {
